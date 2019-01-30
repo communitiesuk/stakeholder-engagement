@@ -31,7 +31,7 @@
 {% endblock %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Stakeholder Engagement
 {% endblock %}
 
 {% block header %}
@@ -43,7 +43,16 @@
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
   }) }}
+
+  {{ govukPhaseBanner({
+    classes: "govuk-width-container",
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'  
+  }) }}
 {% endblock %}
+
 
 {% if useAutoStoreData %}
   {% block footer %}
