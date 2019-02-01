@@ -1,0 +1,131 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    {{serviceName}} - Record contact with a stakeholder
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+            text: "Home",
+            href: "/"
+            },
+            {
+            text: "Record contact with a stakeholder",
+            href: "#"
+            },
+            {
+            text: "Engagement details"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            
+            <h1 class="govuk-heading-l">
+                <span class="govuk-caption-l">Record contact with a stakeholder</span>
+                Engagement details
+            </h1>
+            <form action="engagement/summary" method="post" class="form">
+            {# -------------------------------------------------------------------------------------- #}
+            <pre>
+                {{ data  | dump(2) }}
+            </pre>
+            {# -------------------------------------------------------------------------------------- #}
+                {% call govukFieldset({
+                    }) %}
+                    
+                    {{ govukInput({
+                        id: "stakeholder-full-name",
+                        name: "stakeholder-full-name",
+                        value: data['stakeholder-full-name'],
+                        label: {
+                            text: "Stakeholder's Full name"
+                        },
+                        hint: {
+                            text: "If you want to anonymise this entry describe the stakeholder using job title, industry, and location. Eg CEO of a housing association in the North East"
+                        },
+                        classes: "govuk-!-width-three-quarters"
+                    }) }}
+
+                    {{ govukCheckboxes({
+                        idPrefix: "stakeholder-anonymous",
+                        name: "stakeholder-anonymous",
+                        items: [
+                            {
+                                value: "yes",
+                                text: "Anonymous",
+                                checked: checked('stakeholder-anonymous', 'yes'),
+                                hint: {
+                                    text: "this entry will only record the title, industry, and location"
+                                }
+                            }
+                        ]
+                    }) }}
+
+                    {{ govukDateInput({
+                        id: "stakeholder-date-of-contact",
+                        namePrefix: "stakeholder-date-of-contact",
+                        value: data['stakeholder-date-of-contact'],
+                        fieldset: {
+                            legend: {
+                            text: "Date of contact",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                            }
+                        },
+                        hint: {
+                            text: "For example, 31 1 2019"
+                        }
+                    }) }}
+
+                    {{ govukRadios({
+                        classes: "govuk-radios--inline",
+                        idPrefix: "stakeholder-successful-contact",
+                        name: "stakeholder-successful-contact",
+                        value: data['stakeholder-successful-contact'],
+                        fieldset: {
+                            legend: {
+                            text: "Did you make contact?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                            }
+                        },
+                        items: [
+                            {
+                                value: "yes",
+                                text: "Yes",
+                                checked: checked('stakeholder-successful-contact','yes')
+                            },
+                            {
+                                value: "no",
+                                text: "No",
+                                checked: checked('stakeholder-successful-contact','no'),
+                                hint: {
+                                    text: "I tried to contact this stakeholder but had no response"
+                                }
+                            }
+                        ]
+                    }) }}
+
+                {% endcall %}
+
+                {{ govukButton({
+                    text: "Save and continue",
+                    classes: "govuk-button"
+                }) }}
+            </form>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            {% include "includes/aside.html" %}
+        </div>
+    </div>
+
+{% endblock %}
