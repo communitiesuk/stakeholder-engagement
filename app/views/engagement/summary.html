@@ -39,126 +39,117 @@
                 Engagement summary
             </h1>
             <form action="next-steps" method="post" class="form">
-            {# -------------------------------------------------------------------------------------- #}
-            <pre>
-                {{ data  | dump(2) }}
-            </pre>
-            {# -------------------------------------------------------------------------------------- #}
-            {% call govukFieldset({
-                }) %}               
+                {% call govukFieldset({
+                    }) %}               
 
-                {{ govukTextarea({
-                    name: "stakeholder-summary-of-contact",
-                    id: "stakeholder-summary-of-contact",
-                    value: data['stakeholder-summary-of-contact'],
-                    label: {
-                        text: "Summary of contact"
-                    },
-                    hint: {
-                        text: "Provide the key points, issues, risks, etc discussed with the stakeholder"
-                    }
-                }) }}
-
-                {{ govukCheckboxes({
-                    idPrefix: "stakeholder-themes",
-                    name: "stakeholder-themes",
-                    value: data['stakeholder-themes'],
-                    fieldset: {
-                        legend: {
-                        text: "Which themes did you cover?",
-                        isPageHeading: true,
-                        classes: "govuk-fieldset__legend--m"
+                    {{ govukTextarea({
+                        name: "stakeholder-summary-of-contact",
+                        id: "stakeholder-summary-of-contact",
+                        value: data['stakeholder-summary-of-contact'],
+                        rows: "15",
+                        label: {
+                            text: "Summary of contact"
+                        },
+                        hint: {
+                            text: "Provide the key points, issues, risks, etc discussed with the stakeholder"
                         }
-                    },
-                    items: [
-                        {
-                            value: "communities",
-                            text: "Communities",
-                            checked: checked('stakeholder-themes','communities')
-                        },
-                        {
-                            value: "housing",
-                            text: "Housing",
-                            checked: checked('stakeholder-themes','housing')
-                        },
-                        {
-                            value: "jobs-and-growth",
-                            text: "Jobs and growth",
-                            checked: checked('stakeholder-themes','jobs-and-growth')
-                        },
-                        {
-                            value: "local-disruption",
-                            text: "Local disruption",
-                            checked: checked('stakeholder-themes','local-disruption')
-                        },
-                        {
-                            value: "local-economies",
-                            text: "Local economies",
-                            checked: checked('stakeholder-themes','local-economies')
-                        },
-                        {
-                            value: "local-government",
-                            text: "Local government",
-                            checked: checked('stakeholder-themes','local-government')
-                        },
-                        {
-                            value: "local-resilience",
-                            text: "Local resilience",
-                            checked: checked('stakeholder-themes','local-resilience')
-                        },
-                        {
-                            value: "local-service-deliver",
-                            text: "Local service delivery",
-                            checked: checked('stakeholder-themes','local-service-deliver')
-                        },
-                        {
-                            value: "other",
-                            text: "Other",
-                            checked: checked('stakeholder-themes','other'),
-                            conditional : {
-                                html : otherTheme
-                            }
-                        }
-                    ]
-                }) }}
+                    }) }}
 
-                {{ govukRadios({
-                    classes: "govuk-radios--inline",
-                    idPrefix: "stakeholder-escalated",
-                    name: "stakeholder-escalated",
-                    value: data['stakeholder-escalated'],
-                    fieldset: {
-                        legend: {
-                            text: "Have you escalated anything as a result of this contact?",
+                    {{ govukFileUpload({
+                        id: "stakeholder-file-notes",
+                        name: "stakeholder-file-notes",
+                        value: data['stakeholder-file-notes'],
+                        label: {
+                            text: "Upload engagement notes"
+                        },
+                        hint: {
+                            text: "notes in a different file format that need to be attached to this engagement"
+                        }
+                    }) }}
+
+                    {{ govukCheckboxes({
+                        idPrefix: "stakeholder-themes",
+                        name: "stakeholder-themes",
+                        value: data['stakeholder-themes'],
+                        fieldset: {
+                            legend: {
+                            text: "Which themes did you cover?",
                             isPageHeading: true,
                             classes: "govuk-fieldset__legend--m"
-                        }
-                    },
-                    items: [
-                        {
-                            value: "yes",
-                            text: "Yes",
-                            checked: checked('stakeholder-escalated','yes')
+                            }
                         },
-                        {
-                            value: "no",
-                            text: "No",
-                            checked: checked('stakeholder-escalated','no')
-                        }
-                    ]
+                        items: [
+                            {
+                                value: "communities",
+                                text: "Communities",
+                                checked: checked('stakeholder-themes','communities')
+                            },
+                            {
+                                value: "housing",
+                                text: "Housing",
+                                checked: checked('stakeholder-themes','housing')
+                            },
+                            {
+                                value: "jobs-and-growth",
+                                text: "Jobs and growth",
+                                checked: checked('stakeholder-themes','jobs-and-growth')
+                            },
+                            {
+                                value: "local-disruption",
+                                text: "Local disruption",
+                                checked: checked('stakeholder-themes','local-disruption')
+                            },
+                            {
+                                value: "local-economies",
+                                text: "Local economies",
+                                checked: checked('stakeholder-themes','local-economies')
+                            },
+                            {
+                                value: "local-government",
+                                text: "Local government",
+                                checked: checked('stakeholder-themes','local-government')
+                            },
+                            {
+                                value: "local-resilience",
+                                text: "Local resilience",
+                                checked: checked('stakeholder-themes','local-resilience')
+                            },
+                            {
+                                value: "local-service-deliver",
+                                text: "Local service delivery",
+                                checked: checked('stakeholder-themes','local-service-deliver')
+                            },
+                            {
+                                value: "other",
+                                text: "Other",
+                                checked: checked('stakeholder-themes','other'),
+                                conditional : {
+                                    html : otherTheme
+                                }
+                            }
+                        ]
+                    }) }}
+
+                {% endcall %}
+
+                {{ govukButton({
+                    text: "Save and continue",
+                    classes: "govuk-button"
                 }) }}
-
-            {% endcall %}
-
-            {{ govukButton({
-                text: "Save and continue",
-                classes: "govuk-button"
-            }) }}
             </form>
         </div>
 
         <div class="govuk-grid-column-one-third">
-            {% include "includes/aside.html" %}
+            <aside class="app-related-items" role="complementary">
+                <dl class="mhclg-summary-list">
+                    <dt>Stakeholder name</dt>
+                    <dd>{{ data['stakeholder-full-name'] }}</dd>
+                    <dt>Anonymous</dt>
+                    <dd>Yes</dd>
+                    <dt>Last edited by</dt>
+                    <dd><a href="#">Sarah Walton</a> on 6 August 2018 at 13:06 GMT</dd>
+                </dl>
+            </aside>
         </div>
     </div>
 

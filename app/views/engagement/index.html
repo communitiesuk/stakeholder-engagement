@@ -32,12 +32,7 @@
                 <span class="govuk-caption-l">Record contact with a stakeholder</span>
                 Engagement details
             </h1>
-            <form action="engagement/summary" method="post" class="form">
-            {# -------------------------------------------------------------------------------------- #}
-            <pre>
-                {{ data  | dump(2) }}
-            </pre>
-            {# -------------------------------------------------------------------------------------- #}
+            <form action="engagement/anonymous" method="post" class="form">
                 {% call govukFieldset({
                     }) %}
                     
@@ -70,9 +65,9 @@
                     }) }}
 
                     {{ govukDateInput({
-                        id: "stakeholder-date-of-contact",
-                        namePrefix: "stakeholder-date-of-contact",
-                        value: data['stakeholder-date-of-contact'],
+                        id: "stakeholder-date-contact",
+                        namePrefix: "stakeholder-date-contact",
+                        value: data['stakeholder-date-contact'],
                         fieldset: {
                             legend: {
                             text: "Date of contact",
@@ -123,8 +118,13 @@
             </form>
         </div>
 
-        <div class="govuk-grid-column-one-third">
-            {% include "includes/aside.html" %}
+       <div class="govuk-grid-column-one-third">
+           <aside class="app-related-items" role="complementary">
+                <dl class="mhclg-summary-list">
+                    <dt>Last edited by</dt>
+                    <dd><a href="#">Sarah Walton</a> on 6 August 2018 at 13:06 GMT</dd>
+                </dl>
+            </aside>
         </div>
     </div>
 

@@ -1,0 +1,248 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    {{serviceName}} - Record contact with a stakeholder
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+        items: [
+            {
+            text: "Home",
+            href: "/"
+            },
+            {
+            text: "Record contact with a stakeholder",
+            href: "/engagement"
+            },
+            {
+            text: "Engagement overview"
+            }
+        ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">
+                <span class="govuk-caption-m">Engagement overview</span>
+                    {{ data['stakeholder-full-name'] }}
+                <span class="govuk-caption-l">CEO at Biscuit Factory. South England region</span>
+            </h1>
+            {% set anonymous = data['stakeholder-anonymous'] %}
+            {% for answer in anonymous %}
+                {% if answer === 'yes' %}
+                    {{ govukWarningText({
+                        text: "This engagement has been marked as anonymous",
+                        iconFallbackText: "Warning"
+                    }) }}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="govuk-grid-column-one-third">
+           <aside class="app-related-items" role="complementary">
+                <dl class="mhclg-summary-list">
+                    <dt>Engagement first recorded by</dt>
+                    <dd><a href="#">Jimmy Johnstone</a> on 6/8/2018 at 13:06</dd>
+                    <dt>Last edited by</dt>
+                    <dd><a href="#">Sarah Walton</a> on 2/2/2019 at 14:06</dd>
+                </dl>
+            </aside>
+        </div>
+    </div>
+     <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+                {%set themesList %}
+                    <ul class="govuk-!-padding-left-0">
+                        {% for item in data['stakeholder-themes'] %}
+                            <li>
+                                {% if item == "other" %}
+                                    {{ data['stakeholder-other-theme'] | replace(", ", "\n") | escape | nl2br }}
+                                {% else %}
+                                    {{item}}                            
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endset %}
+                {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-0, govuk-!-font-size-16',
+                    rows: [
+                    {
+                        key: {
+                            text: "Stakeholder's full name"
+                            },
+                            value: {
+                                text: data['stakeholder-full-name']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        href: "/engagement",
+                                        text: "Change",
+                                        visuallyHiddenText: "Stakeholder's full name"
+                                    }
+                                ]
+                            }
+                    },
+                    {
+                        key: {
+                                text: "Date of contact"
+                            },
+                            value: {
+                                text: [
+                                        data['stakeholder-date-contact-day'], 
+                                        data['stakeholder-date-contact-month'], 
+                                        data['stakeholder-date-contact-year']
+                                        ] | join('/')
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        href: "/engagement",
+                                        text: "Change",
+                                        visuallyHiddenText: "Date of contact"
+                                    }
+                                ]
+                            }
+                    },
+                    {
+                        key: {
+                                text: "Did you make contact?"
+                            },
+                            value: {
+                                text: data['stakeholder-successful-contact'] | capitalize
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        href: "/engagement",
+                                        text: "Change",
+                                        visuallyHiddenText: "Did you make contact"
+                                    }
+                                ]
+                            }
+                    }
+                    ]
+                }) }}
+                 {% if data['stakeholder-successful-contact'] === "yes" %}
+                    {{ govukSummaryList({
+                        classes: 'govuk-!-margin-bottom-0, govuk-!-font-size-16',
+                        rows: [
+                        {
+                            key: {
+                                    text: "Themes"
+                                },
+                                value: {
+                                    text: themesList | safe
+                                },
+                                actions: {
+                                    items: [
+                                        {
+                                            href: "summary",
+                                            text: "Change",
+                                            visuallyHiddenText: "Themes"
+                                        }
+                                    ]
+                                }
+                        },
+                        {
+                            key: {
+                                    text: "Summary of contact"
+                                },
+                                value: {
+                                    text: data['stakeholder-summary-of-contact']  | safe | nl2br
+                                },
+                                actions: {
+                                    items: [
+                                        {
+                                            href: "summary",
+                                            text: "Change",
+                                            visuallyHiddenText: "Summary of contact"
+                                        }
+                                    ]
+                                }
+                        },
+                        {
+                            key: {
+                                    text: "Engagement notes"
+                                },
+                                value: {
+                                    text: data['stakeholder-file-notes']
+                                },
+                                actions: {
+                                    items: [
+                                        {
+                                            href: "summary",
+                                            text: "Change",
+                                            visuallyHiddenText: "Themes"
+                                        }
+                                    ]
+                                }
+                        }
+                        ]
+                    }) }}
+                {% endif %}
+                {{ govukSummaryList({
+                    classes: 'govuk_!-margin-bottom-9, govuk-!-font-size-16',
+                    rows: [
+                        {
+                            key: {
+                                    text: "What actions will you take on this stakeholder's information?"
+                                },
+                                value: {
+                                    text: data['stakeholder-actions']  | safe | nl2br
+                                },
+                                actions: {
+                                    items: [
+                                        {
+                                            href: "next-steps",
+                                            text: "Change",
+                                            visuallyHiddenText: "Actions"
+                                        }
+                                    ]
+                                }
+                        },
+                     {
+                        key: {
+                                text: "Have you escalated anything as a result of this contact?"
+                            },
+                            value: {
+                                text: data['stakeholder-escalated'] | capitalize
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        href: "next-steps",
+                                        text: "Change",
+                                        visuallyHiddenText: "Actions"
+                                    }
+                                ]
+                            }
+                    },
+                     {
+                        key: {
+                                text: "When is your next planned contact with the stakeholder?"
+                            },
+                            value: {
+                                text: data['stakeholder-next-contact']
+                            },
+                            actions: {
+                                items: [
+                                    {
+                                        href: "next-steps",
+                                        text: "Change",
+                                        visuallyHiddenText: "Actions"
+                                    }
+                                ]
+                            }
+                    }
+                    ]
+                }) }}
+        </div>
+    </div>
+
+{% endblock %}
