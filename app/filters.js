@@ -39,7 +39,7 @@ module.exports = function (env) {
   ------------------------------------------------------------------ */
   
   const filters = {
-    formatInput : require('./filters/mhclg.formatinput.js')
+    formatInput : require('./filters/mhclg.formatInput.js')
   };
   
   return filters;
