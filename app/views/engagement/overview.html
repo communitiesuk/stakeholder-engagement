@@ -9,21 +9,35 @@
     {{ govukBreadcrumbs({
         items: [
             {
-            text: "Home",
-            href: "/"
+                text: "Home",
+                href: "/"
             },
             {
-            text: "Record contact with a stakeholder",
-            href: "/engagement"
+                text: "Record contact with a stakeholder",
+                href: "/engagement"
             },
             {
-            text: "Engagement overview"
+                text: "Engagement overview"
             }
         ]
     }) }}
 {% endblock %}
 
 {% block content %}
+    {% set anonymous = data['stakeholder-anonymous'] %}
+    {% set themesList %}
+        <ul class="govuk-!-padding-left-0">
+            {% for item in data['stakeholder-themes'] %}
+                <li>
+                    {% if item == "other" %}
+                        {{ data['stakeholder-other-theme'] | replace(", ", "\n") | escape | nl2br }}
+                    {% else %}
+                        {{item}}                            
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endset %}
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -32,7 +46,6 @@
                     {{ data['stakeholder-full-name'] }}
                 <span class="govuk-caption-l">CEO at Biscuit Factory. South England region</span>
             </h1>
-            {% set anonymous = data['stakeholder-anonymous'] %}
             {% for answer in anonymous %}
                 {% if answer === 'yes' %}
                     {{ govukWarningText({
@@ -55,19 +68,6 @@
     </div>
      <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-                {%set themesList %}
-                    <ul class="govuk-!-padding-left-0">
-                        {% for item in data['stakeholder-themes'] %}
-                            <li>
-                                {% if item == "other" %}
-                                    {{ data['stakeholder-other-theme'] | replace(", ", "\n") | escape | nl2br }}
-                                {% else %}
-                                    {{item}}                            
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endset %}
                 {{ govukSummaryList({
                     classes: 'govuk-!-margin-bottom-0, govuk-!-font-size-16',
                     rows: [
@@ -244,5 +244,4 @@
                 }) }}
         </div>
     </div>
-
 {% endblock %}

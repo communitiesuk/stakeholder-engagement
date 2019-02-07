@@ -67,7 +67,6 @@
                     {{ govukDateInput({
                         id: "stakeholder-date-contact",
                         namePrefix: "stakeholder-date-contact",
-                        value: data['stakeholder-date-contact'],
                         fieldset: {
                             legend: {
                             text: "Date of contact",
@@ -77,7 +76,24 @@
                         },
                         hint: {
                             text: "For example, 31 1 2019"
-                        }
+                        },
+                        items: [
+                            {
+                            name: "day",
+                            classes: "govuk-input--width-2",
+                            value: data['stakeholder-date-contact-day']
+                            },
+                            {
+                            name: "month",
+                            classes: "govuk-input--width-2",
+                            value: data['stakeholder-date-contact-month']
+                            },
+                            {
+                            name: "year",
+                            classes: "govuk-input--width-4",
+                            value: data['stakeholder-date-contact-year']
+                            }
+                        ]
                     }) }}
 
                     {{ govukRadios({
