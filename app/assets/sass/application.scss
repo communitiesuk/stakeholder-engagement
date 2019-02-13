@@ -28,3 +28,23 @@ $govuk-global-styles: true;
 .mhclg-border-top {
   border-top: 1px solid $govuk-border-colour;
 }
+#filter-search-results {
+  background-color: govuk-colour('grey-3');
+}
+.table-overview {
+  table td {
+    vertical-align:top;
+  }
+}
+.govuk-summary-list.engagement-summary{
+  .govuk-summary-list__key {
+    font-weight:400;
+    width:20%;
+  }
+  .govuk-summary-list__value {
+    width:69%;
+  }
+  .govuk-summary-list__actions {
+    text-align:left;
+  }
+}

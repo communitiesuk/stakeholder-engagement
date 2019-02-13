@@ -1,0 +1,123 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+      items: [
+          {
+              text: "Profile",
+              href: "/"
+          },
+          {
+              text: "Joseph Waites"
+          }
+      ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Profile</span>
+        Joseph Waites
+      </h1>
+       <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-quarter">
+                <dl class="mhclg-summary-list">
+                    <dt>Position</dt>
+                    <dd>Finance Director</dd>
+                </dl>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <dl class="mhclg-summary-list">
+                        <dt>Organisation</dt>
+                    <dd><a class="govuk-link" href="#">Digital Marketing</a></dd>
+                </dl>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <dl class="mhclg-summary-list">
+                    <dt>Region</dt>
+                    <dd>North west England</dd>
+                </dl>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                {{ govukButton({
+                    text: "Record engagement"
+                }) }}
+            </div>
+        </div>
+    </div>
+  </div>
+   <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            {{ govukTable({
+                caption: "Previous engagements",
+                firstCellIsHeader: false,
+                head: [
+                    {
+                        text: "Date",
+                        classes: 'my-custom-class'
+                    },
+                    {
+                        text: "Rate for vehicles",
+                        classes: 'my-custom-class'
+                    },
+                    {
+                        text: "Rate for bicycles",
+                        classes: 'my-custom-class'
+                    }
+                ],
+                rows: [
+                    [
+                        {
+                            html: "<a href='/engagement/overview'>01/01/2019</a>",
+                            classes : "govuk-body-s"
+                        },
+                        {
+                            text: "£109.80 per week",
+                            classes : "govuk-body-s"
+                        },
+                        {
+                            text: "59.10 per week",
+                            classes : "govuk-body-s"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Next 33 weeks",
+                            classes : "govuk-body-s"
+                        },
+                        {
+                            text: "£159.80 per week",
+                            classes : "govuk-body-s"
+                        },
+                        {
+                            text: "£89.10 per week",
+                            classes : "govuk-body-s"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Total estimated pay",
+                            classes : "govuk-body-s"
+                        },
+                        {
+                            text: "£4,282.20",
+                            classes : "govuk-body-s"
+                        },
+                        {
+                            text: "£2,182.20",
+                            classes : "govuk-body-s"
+                        }
+                    ]
+                ]
+                }) }}
+        </div>
+   </div>
+
+{% endblock %}

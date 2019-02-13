@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+      items: [
+          {
+              text: "Stakeholder Engagement Service",
+              href: "/"
+          },
+          {
+              text: "Search"
+          }
+      ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-m">{{ serviceName }}</span>
+        Search
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form action="search" method="post" class="form">
+          {% call govukFieldset({
+              }) %}
+              <label class="govuk-label govuk-!-width-three-quarters" for="three-quarters">Search</label>
+              <span id="name-hint" class="govuk-hint">eg Organisation, Name, Region or Job title</span>
+              <input class="govuk-input govuk-!-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
+              {{ govukButton({
+                  text: "Search",
+                  classes: "govuk-button"
+              }) }}
+          {% endcall %}
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

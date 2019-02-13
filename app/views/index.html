@@ -6,21 +6,20 @@
 {% endblock %}
 
 {% block beforeContent %}
-    {{ govukBreadcrumbs({
-        items: [
-            {
-               text: "Stakeholder Engagement Service",
-                href: "/"
-            },
-            {
-                text: "Dashboard"
-            }
-        ]
-    }) }}
+  {{ govukBreadcrumbs({
+      items: [
+          {
+              text: "Stakeholder Engagement Service",
+              href: "/"
+          },
+          {
+              text: "Dashboard"
+          }
+      ]
+  }) }}
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
@@ -28,125 +27,127 @@
         Dashboard
       </h1>
     </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <div class="govuk-form-group">
-      <label class="govuk-label govuk-!-width-three-quarters" for="three-quarters">
-        Search
-      </label>
-      <span id="name-hint" class="govuk-hint">eg Organisation, Name, Region or Job title</span>
-      <input class="govuk-input govuk-!-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
-      <button type="submit" class="govuk-button">Search</button>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form action="search" method="post" class="form">
+          {% call govukFieldset({
+              }) %}
+              <label class="govuk-label govuk-!-width-three-quarters" for="three-quarters">Search</label>
+              <span id="name-hint" class="govuk-hint">eg Organisation, Name, Region or Job title</span>
+              <input class="govuk-input govuk-!-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
+              {{ govukButton({
+                  text: "Search",
+                  classes: "govuk-button"
+              }) }}
+          {% endcall %}
+      </form>
     </div>
   </div>
 
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    <h3 class="govuk-heading-m mhclg-border-top govuk-!-padding-top-5">Policy Area</h3>
-    <ul class="govuk-list govuk-body-s">
-        <li><a class="govuk-link" href="engagement">Housing</a></li>
-        <li><a class="govuk-link" href="engagement">Homelessness</a></li>
-        <li><a class="govuk-link" href="engagement">Hate crime</a></li>
-        <li><a class="govuk-link" href="engagement">Regional support</a></li>
+  <div class="govuk-grid-row govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-one-half">
+      <h3 class="govuk-heading-m mhclg-border-top govuk-!-padding-top-5">Policy Area</h3>
+      <ul class="govuk-list govuk-body-s">
+        <li><a class="govuk-link" href="/policy/housing">Housing</a></li>
+        <li><a class="govuk-link" href="/policy/homelessness">Homelessness</a></li>
+        <li><a class="govuk-link" href="/policy/hate-crime">Hate crime</a></li>
+        <li><a class="govuk-link" href="/policy/regional-support">Regional support</a></li>
         <li><a class="govuk-link" href="engagement">Record contact with a stakeholder</a></li>
-
       </ul>
-  </div>
-  <div class="govuk-grid-column-one-half">
-    <h3 class="govuk-heading-m mhclg-border-top govuk-!-padding-top-5">Regions</h3>
-    <ul class="govuk-list govuk-body-s">
-        <li><a class="govuk-link" href="engagement">South East England</a></li>
-        <li><a class="govuk-link" href="engagement">North West England</a></li>
-        <li><a class="govuk-link" href="engagement">Cornwall</a></li>
-        <li><a class="govuk-link" href="engagement">Scotland</a></li>
-        <li><a class="govuk-link" href="engagement">Midlands</a></li>
-
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <h3 class="govuk-heading-m mhclg-border-top govuk-!-padding-top-5">Regions</h3>
+      <ul class="govuk-list govuk-body-s">
+        <li><a class="govuk-link" href="/region/south-east-england">South East England</a></li>
+        <li><a class="govuk-link" href="/region/north-west-england">North West England</a></li>
+        <li><a class="govuk-link" href="/region/cornwall">Cornwall</a></li>
+        <li><a class="govuk-link" href="/region/scotland">Scotland</a></li>
+        <li><a class="govuk-link" href="/region/midlands">Midlands</a></li>
       </ul>
+    </div>
   </div>
-</div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    {{ govukTable({
-        caption: "Your recent engagements",
-        captionClasses: "govuk-heading-m",
-        firstCellIsHeader: false,
-        head: [
-          {
-            text: "Name"
-          },
-          {
-            text: "Organisation"
-          },
-          {
-            text: "Date"
-          },
-          {
-            text: "Summary",
-            classes: 'govuk-!-width-one-half'
-          }
-        ],
-        rows: [
-          [
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukTable({
+          caption: "Your recent engagements",
+          captionClasses: "govuk-heading-m",
+          firstCellIsHeader: false,
+          head: [
             {
-              
-              html: "<a href='#'>Chris Hadfield</a>",
-              classes : "govuk-body-s"
+              text: "Name"
             },
             {
-              text: "Lambeth",
-              classes : "govuk-body-s"
+              text: "Organisation"
             },
             {
-              text: "01/01/2019",
-              classes : "govuk-body-s"
+              text: "Date"
             },
             {
-              text: "Ribeye aute in frankfurter dolore ea rump nisi ipsum do et drumstick. Bresaola aute chicken short loin meatloaf, mollit buffalo minim kielbasa doner incididunt corned beef tongue... ",
-              classes : "govuk-body-s"
+              text: "Summary",
+              classes: 'govuk-!-width-one-half'
             }
           ],
-           [
-            {
-              html: "<a href='#'>Clarice Smith</a>",
-              classes : "govuk-body-s"
-            },
-            {
-              text: "Institute of Directors",
-              classes : "govuk-body-s"
-            },
-            {
-              text: "01/01/2019",
-              classes : "govuk-body-s"
-            },
-            {
-              text: "Corned beef capicola tail occaecat cupidatat, meatloaf minim chuck. In magna picanha, dolore excepteur reprehenderit fatback duis spare ribs porchetta.... ",
-              classes : "govuk-body-s"
-            }
-          ],
-           [
-            {
-              html: "<a href='#'>Jasmine Singh</a>",
-              classes : "govuk-body-s"
-            },
-            {
-              text: "Central London Gurdwara",
-              classes : "govuk-body-s"
-            },
-            {
-              text: "01/01/2019",
-              classes : "govuk-body-s"
-            },
-            {
-              text: "Biltong pastrami pork chop anim, jowl qui nulla venison. Ut corned beef aute drumstick tempor consequat... ",
-              classes : "govuk-body-s"
-            }
+          rows: [
+            [
+              {
+                
+                html: "<a href='/person/linda-padilla'>Linda Padilla</a>",
+                classes : "govuk-body-s"
+              },
+              {
+                html: "<a href='/organisation/lambeth'>Lambeth</a>",
+                classes : "govuk-body-s"
+              },
+              {
+                text: "01/01/2019",
+                classes : "govuk-body-s"
+              },
+              {
+                text: "Ribeye aute in frankfurter dolore ea rump nisi ipsum do et drumstick. Bresaola aute chicken short loin meatloaf, mollit buffalo minim kielbasa doner incididunt corned beef tongue...",
+                classes : "govuk-body-s"
+              }
+            ],
+            [
+              {
+                html: "<a href='/person/clarice-starling'>Clarice Starling</a>",
+                classes : "govuk-body-s"
+              },
+              {
+                html: "<a href='/organisation/institute-of-directors'>Institute of Directors</a>",
+                classes : "govuk-body-s"
+              },
+              {
+                text: "01/01/2019",
+                classes : "govuk-body-s"
+              },
+              {
+                text: "Corned beef capicola tail occaecat cupidatat, meatloaf minim chuck. In magna picanha, dolore excepteur reprehenderit fatback duis spare ribs porchetta...",
+                classes : "govuk-body-s"
+              }
+            ],
+            [
+              {
+                html: "<a href='/person/noonien-singh'>Noonien Singh</a>",
+                classes : "govuk-body-s"
+              },
+              {
+                html: "<a href='/organisation/central-london-gurdwara'>Central London Gurdwara</a>",
+                classes : "govuk-body-s"
+              },
+              {
+                text: "01/01/2019",
+                classes : "govuk-body-s"
+              },
+              {
+                text: "Biltong pastrami pork chop anim, jowl qui nulla venison. Ut corned beef aute drumstick tempor consequat...",
+                classes : "govuk-body-s"
+              }
+            ]
           ]
-        ]
-      }) }}
+        }) }}
+    </div>
   </div>
-</div>
 
 {% endblock %}
