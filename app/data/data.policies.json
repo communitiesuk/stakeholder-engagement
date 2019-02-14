@@ -1,0 +1,11 @@
+{
+    "communities" : "Communities",
+    "housing" : "Housing",
+    "jobs-and-growth" :"Jobs and growth",
+    "homelessness-and-rough-sleeping" : "Homelessness and Rough Sleeping",
+    "local-economies" : "Local economies",
+    "local-government" : "Local government",
+    "local-resilience": "Local resilience",
+    "local-service-delivery": "Local service delivery",
+    "other" : "Other"
+}

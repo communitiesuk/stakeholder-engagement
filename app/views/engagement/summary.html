@@ -79,59 +79,71 @@
                             }
                         },
                         items: [
-                            {
-                                value: "communities",
-                                text: "Communities",
-                                checked: checked('stakeholder-themes','communities')
-                            },
-                            {
-                                value: "housing",
-                                text: "Housing",
-                                checked: checked('stakeholder-themes','housing')
-                            },
-                            {
-                                value: "jobs-and-growth",
-                                text: "Jobs and growth",
-                                checked: checked('stakeholder-themes','jobs-and-growth')
-                            },
-                            {
-                                value: "local-disruption",
-                                text: "Local disruption",
-                                checked: checked('stakeholder-themes','local-disruption')
-                            },
-                            {
-                                value: "local-economies",
-                                text: "Local economies",
-                                checked: checked('stakeholder-themes','local-economies')
-                            },
-                            {
-                                value: "local-government",
-                                text: "Local government",
-                                checked: checked('stakeholder-themes','local-government')
-                            },
-                            {
-                                value: "local-resilience",
-                                text: "Local resilience",
-                                checked: checked('stakeholder-themes','local-resilience')
-                            },
-                            {
-                                value: "local-service-deliver",
-                                text: "Local service delivery",
-                                checked: checked('stakeholder-themes','local-service-deliver')
-                            },
-                            {
-                                value: "other",
-                                text: "Other",
-                                checked: checked('stakeholder-themes','other'),
-                                conditional : {
-                                    html : otherTheme
-                                }
-                            }
-                        ]
+                                {
+                    value: 'communities',
+                    text: 'Communities',
+                    checked: checked('stakeholder-themes','communities')
+                }
+            
+                ,  
+                {
+                    value: 'housing',
+                    text: 'Housing',
+                    checked: checked('stakeholder-themes','housing')
+                }
+            
+                ,  
+                {
+                    value: 'jobs-and-growth',
+                    text: 'Jobs and growth',
+                    checked: checked('stakeholder-themes','jobs-and-growth')
+                }
+            
+                ,  
+                {
+                    value: 'homelessness-and-rough-sleeping',
+                    text: 'Homelessness and Rough Sleeping',
+                    checked: checked('stakeholder-themes','homelessness-and-rough-sleeping')
+                }
+            
+                ,  
+                {
+                    value: 'local-economies',
+                    text: 'Local economies',
+                    checked: checked('stakeholder-themes','local-economies')
+                }
+            
+                ,  
+                {
+                    value: 'local-government',
+                    text: 'Local government',
+                    checked: checked('stakeholder-themes','local-government')
+                }
+            
+                ,  
+                {
+                    value: 'local-resilience',
+                    text: 'Local resilience',
+                    checked: checked('stakeholder-themes','local-resilience')
+                }
+            
+                ,  
+                {
+                    value: 'local-service-delivery',
+                    text: 'Local service delivery',
+                    checked: checked('stakeholder-themes','local-service-delivery')
+                }
+            
+                ,  
+                {
+                    value: 'other',
+                    text: 'Other',
+                    checked: checked('stakeholder-themes','other')
+                }
+                            ]
                     }) }}
 
                 {% endcall %}
-
                 {{ govukButton({
                     text: "Save and continue",
                     classes: "govuk-button"

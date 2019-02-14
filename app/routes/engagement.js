@@ -1,11 +1,13 @@
 const engagementRouter = (req, res) => {
     const { step } = req.params;
+    const policies =  require("../data/data.policies.json");
     let template = "engagement/index";
     
     let params = {
       currentpath: req.path,
       params: req.params,
-      backButton : '/engagement'
+      backButton : '/engagement',
+      policies
     };
 
     // template

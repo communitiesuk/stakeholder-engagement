@@ -50,21 +50,21 @@
     <div class="govuk-grid-column-one-half">
       <h3 class="govuk-heading-m mhclg-border-top govuk-!-padding-top-5">Policy Area</h3>
       <ul class="govuk-list govuk-body-s">
-        <li><a class="govuk-link" href="/policy/housing">Housing</a></li>
-        <li><a class="govuk-link" href="/policy/homelessness">Homelessness</a></li>
-        <li><a class="govuk-link" href="/policy/hate-crime">Hate crime</a></li>
-        <li><a class="govuk-link" href="/policy/regional-support">Regional support</a></li>
-        <li><a class="govuk-link" href="engagement">Record contact with a stakeholder</a></li>
+        {% for link, policy in policies %}
+          <li>
+            <a class="govuk-link" href="/policy/{{ link }}">{{ policy }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
     <div class="govuk-grid-column-one-half">
       <h3 class="govuk-heading-m mhclg-border-top govuk-!-padding-top-5">Regions</h3>
       <ul class="govuk-list govuk-body-s">
-        <li><a class="govuk-link" href="/region/south-east-england">South East England</a></li>
-        <li><a class="govuk-link" href="/region/north-west-england">North West England</a></li>
-        <li><a class="govuk-link" href="/region/cornwall">Cornwall</a></li>
-        <li><a class="govuk-link" href="/region/scotland">Scotland</a></li>
-        <li><a class="govuk-link" href="/region/midlands">Midlands</a></li>
+      {% for link, region in regions %}
+          <li>
+            <a class="govuk-link" href="/region/{{ link }}">{{ region }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
   </div>
@@ -93,7 +93,7 @@
             [
               {
                 
-                html: "<a href='/person/linda-padilla'>Linda Padilla</a>",
+                html: "<a href='/profile'>Linda Padilla</a>",
                 classes : "govuk-body-s"
               },
               {
@@ -111,7 +111,7 @@
             ],
             [
               {
-                html: "<a href='/person/clarice-starling'>Clarice Starling</a>",
+                html: "<a href='/profile'>Clarice Starling</a>",
                 classes : "govuk-body-s"
               },
               {
@@ -129,7 +129,7 @@
             ],
             [
               {
-                html: "<a href='/person/noonien-singh'>Noonien Singh</a>",
+                html: "<a href='/profile'>Noonien Singh</a>",
                 classes : "govuk-body-s"
               },
               {
@@ -147,6 +147,12 @@
             ]
           ]
         }) }}
+    
+        {{ govukButton({
+              text: "Record a new engagement",
+              classes: "govuk-button",
+              href: "engagement"
+          }) }}
     </div>
   </div>
 

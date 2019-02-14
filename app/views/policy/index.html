@@ -6,20 +6,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-      items: [
-          {
-              text: "Dashboard",
-              href: "/"
-          },
-          {
-              text: "Policy"
-          },
-          {
-              text: "Housing"
-          }
-      ]
-  }) }}
+  {{ govukBackLink({
+        text: "Back",
+        href: "javascript:history.back(1);"
+    }) }}
 {% endblock %}
 
 {% block content %}
@@ -27,14 +17,14 @@
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Policy</span>
-        Housing
+        {{ page.title }}
       </h1>
     </div>
   </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-        <form action="#" method="post" class="form govuk-!-padding-3 govuk-!-margin-bottom-9" id="filter-search-results">
+        <form action="#" method="get" class="form govuk-!-padding-3 govuk-!-margin-bottom-9" id="filter-search-results">
             {% call govukFieldset({
                 }) %}
                 <div class="govuk-grid-row">
@@ -48,37 +38,6 @@
                         }) }}
                     </div>
                        
-                        <div class="govuk-grid-column-one-third">
-                        {{ govukInput({
-                            label: {
-                                text: "Date (from)"
-                            },
-                            classes: "govuk-input--width-10",
-                            id: "policy-filter-date",
-                            name: "policy-filter-date"
-                        }) }}
-                    </div>
-                    <div class="govuk-grid-column-one-third">
-                        {{ govukInput({
-                            label: {
-                                text: "Date (to)"
-                            },
-                            classes: "govuk-input--width-10",
-                            id: "policy-filter-date",
-                            name: "policy-filter-date"
-                        }) }}
-                    </div>
-                </div>
-                        <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-third">
-                            {{ govukInput({
-                                label: {
-                                    text: "Policy area"
-                                },
-                                id: "policy-filter-area",
-                                name: "policy-filter-area"
-                            }) }}
-                        </div>
                         <div class="govuk-grid-column-one-third">
                             {{ govukInput({
                                 label: {
@@ -97,6 +56,28 @@
                             name: "policy-filter-staff"
                         }) }}
                     </div>
+                        
+                </div>
+                 <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            {{ govukInput({
+                                label: {
+                                    text: "Policy area"
+                                },
+                                id: "policy-filter-area",
+                                name: "policy-filter-area"
+                            }) }}
+                        </div>
+                    <div class="govuk-grid-column-one-third">
+                        {{ govukInput({
+                            label: {
+                                text: "Date range"
+                            },
+                            classes: "govuk-input--width-10",
+                            id: "policy-filter-date",
+                            name: "policy-filter-date"
+                        }) }}
+                    </div>
                          
                     </div>
             {% endcall %}
@@ -108,219 +89,52 @@
         </form>
     </div>
   </div>
-{# 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-        <div class="table-overview">
-            {{ govukTable({
-                caption: "Engagement history",
-                captionClasses: "govuk-heading-m",
-                firstCellIsHeader: false,
-                head: [
-                    {
-                    text: "Date"
-                    },
-                    {
-                    text: "Stakeholder"
-                    },
-                    {
-                    text: "Staff"
-                    },
-                    {
-                    text: "Summary",
-                    classes: 'govuk-!-width-one-half'
-                    },
-                    {
-                    text: "Themes"
-                    }
-                ],
-                rows: [
-                    [
-                        {
-                            
-                            text: "01/02/2019",
-                            classes : "govuk-body-s"
-                        },
-                        {
-                            html: "<a href='/person/linda-padilla'>Joseph Waterman</a>",
-                            classes : "govuk-body-s"
-                        },
-                        {
-                            html: "<a href='/person/linda-padilla'>Billy Robson</a>",
-                            classes : "govuk-body-s"
-                        },
-                        {
-                            text: "Spicy jalapeno short ribs eiusmod meatloaf, elit venison biltong fugiat. Velit frankfurter tongue landjaeger bresaola nulla laborum esse turkey prosciutto buffalo pork loin qui. Aliqua ut laborum hamburger adipisicing pariatur picanha mollit swine do meatball. Pork fugiat short loin anim, ipsum ut pork belly ribeye velit. Tail salami sausage ex ground round, turducken deserunt non. Aute incididunt t-bone cupidatat, sausage ribeye alcatra landjaeger leberkas strip steak est anim.
-
-                                    Tri-tip ribeye eu reprehenderit exercitation, meatball do boudin frankfurter occaecat spare ribs burgdoggen. Shoulder aliqua esse bacon swine tenderloin velit salami buffalo qui. Nostrud irure pork chop corned beef voluptate pork. Culpa salami anim capicola leberkas bacon filet mignon kielbasa irure eiusmod meatloaf do. Fatback tempor tri-tip in pork chop landjaeger ex ipsum officia commodo dolore cillum ullamco. Sirloin swine jerky turducken, ut in cupim spare ribs. Drumstick meatloaf in, turducken cupim cillum nostrud eiusmod ground round occaecat exercitation excepteur capicola quis ball tip.
-
-                                    Magna tongue cupidatat pork, chicken minim bacon rump exercitation. Cow mollit burgdoggen non nulla magna. Filet mignon deserunt proident cupim meatloaf aliquip tempor. Burgdoggen filet mignon jowl, ut drumstick boudin nostrud alcatra adipisicing ham hock deserunt meatloaf minim labore brisket."  
-                                    | safe | nl2br,
-                            classes : "govuk-body-s"
-                        },
-                        {
-                            html: "<ul class='govuk-list govuk-body-s govuk-list--bullet'>
-                                        <li><a href='#'>Hate crime</a></li>
-                                        <li><a href='#'>Poverty</a></li>
-                                    </ul>",
-                            classes : "govuk-body-s"
-                        }
-                    ]
-                    ]
-            }) }}
-        </div>
-    </div>
-</div>
-#}
  <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
         <div class="table-overview">
-            {{ govukTable({
-                caption: "Engagement history",
-                captionClasses: "govuk-heading-m",
-                firstCellIsHeader: false,
-                head: [
-                    {
-                    text: "Date"
-                    },
-                    {
-                    text: "Stakeholder"
-                    },
-                    {
-                    text: "Summary",
-                    classes: 'govuk-!-width-one-half'
-                    },
-                    {
-                    text: "Themes"
-                    }
-                ],
-                rows: [
-                    [
-                        {
-                            
-                            html: '<dl class="mhclg-summary-list">
-                            <dt>Date recorded</dt>
-                            <dd>6/8/2018</dd>
-                            <dt>Recorded by</dt>
-                            <dd><a href="#">Sarah Walton</a></dd>
-                        </dl>',
-                            classes : "govuk-body-s"
-                        },
-                        {
-                            html: "<dl class='mhclg-summary-list'>
-                            <dt>Stakeholder name</dt>
-                            <dd><a href='#'>Joseph Waterman</a></dd>
-                            <dt>Role</dt>
-                            <dd>Finance director</dd>
-                            <dt>Stakeholder</dt>
-                            <dd><a href='#'>Big chocolate factory</a></dd>
-                        </dl>",
-                            classes : "govuk-body-s"
-                        },
-                        {
-                            text: "Spicy jalapeno short ribs eiusmod meatloaf, elit venison biltong fugiat. Velit frankfurter tongue landjaeger bresaola nulla laborum esse turkey prosciutto buffalo pork loin qui. Aliqua ut laborum hamburger adipisicing pariatur picanha mollit swine do meatball. Pork fugiat short loin anim, ipsum ut pork belly ribeye velit. Tail salami sausage ex ground round, turducken deserunt non. Aute incididunt t-bone cupidatat, sausage ribeye alcatra landjaeger leberkas strip steak est anim.
-
-                                    Tri-tip ribeye eu reprehenderit exercitation, meatball do boudin frankfurter occaecat spare ribs burgdoggen. Shoulder aliqua esse bacon swine tenderloin velit salami buffalo qui. Nostrud irure pork chop corned beef voluptate pork. Culpa salami anim capicola leberkas bacon filet mignon kielbasa irure eiusmod meatloaf do. Fatback tempor tri-tip in pork chop landjaeger ex ipsum officia commodo dolore cillum ullamco. Sirloin swine jerky turducken, ut in cupim spare ribs. Drumstick meatloaf in, turducken cupim cillum nostrud eiusmod ground round occaecat exercitation excepteur capicola quis ball tip.
-
-                                    Magna tongue cupidatat pork, chicken minim bacon rump exercitation. Cow mollit burgdoggen non nulla magna. Filet mignon deserunt proident cupim meatloaf aliquip tempor. Burgdoggen filet mignon jowl, ut drumstick boudin nostrud alcatra adipisicing ham hock deserunt meatloaf minim labore brisket."  
-                                    | safe | nl2br,
-                            classes : "govuk-body-s"
-                        },
-                        {
-                            html: "<ul class='govuk-list govuk-body-s govuk-list--bullet'>
-                                        <li><a href='#'>Hate crime</a></li>
-                                        <li><a href='#'>Poverty</a></li>
-                                    </ul>",
-                            classes : "govuk-body-s"
-                        }
-                    ]
-                    ]
-            }) }}
+            <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-heading-m">Engagement history</caption>
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">Contact details</th>
+                    <th class="govuk-table__header" scope="col">Stakeholder</th>
+                    <th class="govuk-table__header govuk-!-width-one-half" scope="col">Summary</th>
+                    <th class="govuk-table__header" scope="col">Themes</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    {% for entry in entries %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell govuk-body-s" scope="row">
+                                <dl class="mhclg-summary-list">
+                                    <dt>Date contacted</dt>
+                                    <dd>{{ entry.date }}</dd>
+                                    <dt>Contacted by</dt>
+                                    <dd><a href="#"> {{ entry.staff }}</a></dd>
+                                </dl>
+                            </td>
+                            <td class="govuk-table__cell govuk-body-s">
+                                <dl class='mhclg-summary-list'>
+                                    <dt>Name</dt>
+                                    <dd><a href='/profile'>{{ entry.stakeholder.name }}</a></dd>
+                                    <dt>Role</dt>
+                                    <dd>{{ entry.stakeholder.role }}</dd>
+                                    <dt>Organisation</dt>
+                                    <dd><a href='#'>{{ entry.stakeholder.organisation }}</a></dd>
+                                </dl>
+                            </td>
+                            <td class="govuk-table__cell govuk-body-s">{{ entry.summary | safe | nl2br }}</td>
+                            <td class="govuk-table__cell govuk-body-s">
+                                <ul class='govuk-list govuk-body-s govuk-list--bullet'>
+                                    <li><a href='#'>Hate crime</a></li>
+                                    <li><a href='#'>Poverty</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div> 
-{#
-    <div class="govuk-grid-row">
-     <div class="govuk-grid-column-full">
-            <h3 class="govuk-heading-m">Engagement history</h3>
-            <dl class="govuk-summary-list engagement-summary govuk-!-margin-bottom-9 ">
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        <h4 class="govuk-body-s govuk-!-font-weight-bold">Engagment detail</h4>
-                    <dl class="mhclg-summary-list">
-                            <dt>Date recorded</dt>
-                            <dd>6/8/2018</dd>
-                            <dt>Recorded by</dt>
-                            <dd><a href="#">Sarah Walton</a></dd>
-                        </dl>
-                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                        <h4 class="govuk-body-s govuk-!-font-weight-bold">Stakeholder detail</h4>
-                        <dl class="mhclg-summary-list">
-                            <dt>Stakeholder name</dt>
-                            <dd><a href="#">Joseph Waterman</a></dd>
-                            <dt>Role</dt>
-                            <dd>Finance director</dd>
-                            <dt>Stakeholder</dt>
-                            <dd><a href="#">Big chocolate factory</a></dd>
-                        </dl>
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        <h4 class="govuk-body-s govuk-!-font-weight-bold">Summary</h4>
-                        <p class="govuk-body-s">Spicy jalapeno short ribs eiusmod meatloaf, elit venison biltong fugiat. Velit frankfurter tongue landjaeger bresaola nulla laborum esse turkey prosciutto buffalo pork loin qui. Aliqua ut laborum hamburger adipisicing pariatur picanha mollit swine do meatball. Pork fugiat short loin anim, ipsum ut pork belly ribeye velit. Tail salami sausage ex ground round, turducken deserunt non. Aute incididunt t-bone cupidatat, sausage ribeye alcatra landjaeger leberkas strip steak est anim.</p>
-                        <p class="govuk-body-s">Tri-tip ribeye eu reprehenderit exercitation, meatball do boudin frankfurter occaecat spare ribs burgdoggen. Shoulder aliqua esse bacon swine tenderloin velit salami buffalo qui. Nostrud irure pork chop corned beef voluptate pork. Culpa salami anim capicola leberkas bacon filet mignon kielbasa irure eiusmod meatloaf do. Fatback tempor tri-tip in pork chop landjaeger ex ipsum officia commodo dolore cillum ullamco. Sirloin swine jerky turducken, ut in cupim spare ribs. Drumstick meatloaf in, turducken cupim cillum nostrud eiusmod ground round occaecat exercitation excepteur capicola quis ball tip.</p>
-                        <p class="govuk-body-s">Magna tongue cupidatat pork, chicken minim bacon rump exercitation. Cow mollit burgdoggen non nulla magna. Filet mignon deserunt proident cupim meatloaf aliquip tempor. Burgdoggen filet mignon jowl, ut drumstick boudin nostrud alcatra adipisicing ham hock deserunt meatloaf minim labore brisket.</p>
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                    <h4 class="govuk-body-s govuk-!-font-weight-bold">Themes</h4>
-                    <ul class='govuk-list govuk-body-s govuk-list--bullet'>
-                        <li><a href='#'>Hate crime</a></li>
-                        <li><a href='#'>Poverty</a></li>
-                    </ul>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-    </div>
-   
-
-    <h3 class="govuk-heading-m">Engagement history</h3>
-    <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-quarter">
-                <h4 class="govuk-body-s govuk-!-font-weight-bold">Engagment detail</h4>
-                <dl class="mhclg-summary-list">
-                    <dt>Date recorded</dt>
-                    <dd>6/8/2018</dd>
-                    <dt>Recorded by</dt>
-                    <dd><a href="#">Sarah Walton</a></dd>
-                </dl>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <h4 class="govuk-body-s govuk-!-font-weight-bold">Stakeholder detail</h4>
-                <dl class="mhclg-summary-list">
-                    <dt>Stakeholder name</dt>
-                    <dd><a href="#">Joseph Waterman</a></dd>
-                    <dt>Role</dt>
-                    <dd>Finance director</dd>
-                    <dt>Stakeholder</dt>
-                    <dd><a href="#">Big chocolate factory</a></dd>
-                </dl>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-            <h4 class="govuk-body-s govuk-!-font-weight-bold">Themes</h4>
-                        <ul class='govuk-list govuk-body-s govuk-list--bullet'>
-                            <li><a href='#'>Hate crime</a></li>
-                            <li><a href='#'>Poverty</a></li>
-                        </ul>
-            </div>
-    </div>
-
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-        <h4 class="govuk-body-s govuk-!-font-weight-bold">Summary</h4>
-        <p class="govuk-body-s">Spicy jalapeno short ribs eiusmod meatloaf, elit venison biltong fugiat. Velit frankfurter tongue landjaeger bresaola nulla laborum esse turkey prosciutto buffalo pork loin qui. Aliqua ut laborum hamburger adipisicing pariatur picanha mollit swine do meatball. Pork fugiat short loin anim, ipsum ut pork belly ribeye velit. Tail salami sausage ex ground round, turducken deserunt non. Aute incididunt t-bone cupidatat, sausage ribeye alcatra landjaeger leberkas strip steak est anim.</p>
-        <p class="govuk-body-s">Tri-tip ribeye eu reprehenderit exercitation, meatball do boudin frankfurter occaecat spare ribs burgdoggen. Shoulder aliqua esse bacon swine tenderloin velit salami buffalo qui. Nostrud irure pork chop corned beef voluptate pork. Culpa salami anim capicola leberkas bacon filet mignon kielbasa irure eiusmod meatloaf do. Fatback tempor tri-tip in pork chop landjaeger ex ipsum officia commodo dolore cillum ullamco. Sirloin swine jerky turducken, ut in cupim spare ribs. Drumstick meatloaf in, turducken cupim cillum nostrud eiusmod ground round occaecat exercitation excepteur capicola quis ball tip.</p>
-        <p class="govuk-body-s">Magna tongue cupidatat pork, chicken minim bacon rump exercitation. Cow mollit burgdoggen non nulla magna. Filet mignon deserunt proident cupim meatloaf aliquip tempor. Burgdoggen filet mignon jowl, ut drumstick boudin nostrud alcatra adipisicing ham hock deserunt meatloaf minim labore brisket.</p>
-        </div>
-    </div>  #}
-
 {% endblock %}
