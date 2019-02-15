@@ -5,26 +5,12 @@
   {{ serviceName }}
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBreadcrumbs({
-      items: [
-          {
-              text: "Stakeholder Engagement Service",
-              href: "/"
-          },
-          {
-              text: "Dashboard"
-          }
-      ]
-  }) }}
-{% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-m">{{ serviceName }}</span>
-        Dashboard
+        <span class="govuk-caption-m">Dashboard</span>
+        {{ serviceName }}
       </h1>
     </div>
   </div>

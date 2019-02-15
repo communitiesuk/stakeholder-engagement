@@ -123,7 +123,7 @@
                                     <dd><a href='#'>{{ entry.stakeholder.organisation }}</a></dd>
                                 </dl>
                             </td>
-                            <td class="govuk-table__cell govuk-body-s">{{ entry.summary | safe | nl2br }}</td>
+                            <td class="govuk-table__cell govuk-body-s">{{ entry.summary | escape  | nl2br }}</td>
                             <td class="govuk-table__cell govuk-body-s">
                                 <ul class='govuk-list govuk-body-s govuk-list--bullet'>
                                     <li><a href='#'>Hate crime</a></li>

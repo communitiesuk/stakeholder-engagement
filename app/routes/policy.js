@@ -26,9 +26,8 @@ const policyRouter = (req, res) => {
             date,
             staff
           };
-         
 
-          var filteresStakeholder = stakeholders.filter(function (stakeholder) {
+          stakeholders.filter(function (stakeholder) {
             if(stakeholder.name.fullName === engagement.fullName) {
               const { organisation, name, role } = stakeholder;
 
