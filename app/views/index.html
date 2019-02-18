@@ -56,83 +56,37 @@
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      {{ govukTable({
-          caption: "Your recent engagements",
-          captionClasses: "govuk-heading-m",
-          firstCellIsHeader: false,
-          head: [
-            {
-              text: "Name"
-            },
-            {
-              text: "Organisation"
-            },
-            {
-              text: "Date"
-            },
-            {
-              text: "Summary",
-              classes: 'govuk-!-width-one-half'
-            }
-          ],
-          rows: [
-            [
-              {
-                
-                html: "<a href='/profile'>Linda Padilla</a>",
-                classes : "govuk-body-s"
-              },
-              {
-                html: "<a href='/organisation/lambeth'>Lambeth</a>",
-                classes : "govuk-body-s"
-              },
-              {
-                text: "01/01/2019",
-                classes : "govuk-body-s"
-              },
-              {
-                text: "Ribeye aute in frankfurter dolore ea rump nisi ipsum do et drumstick. Bresaola aute chicken short loin meatloaf, mollit buffalo minim kielbasa doner incididunt corned beef tongue...",
-                classes : "govuk-body-s"
-              }
-            ],
-            [
-              {
-                html: "<a href='/profile'>Clarice Starling</a>",
-                classes : "govuk-body-s"
-              },
-              {
-                html: "<a href='/organisation/institute-of-directors'>Institute of Directors</a>",
-                classes : "govuk-body-s"
-              },
-              {
-                text: "01/01/2019",
-                classes : "govuk-body-s"
-              },
-              {
-                text: "Corned beef capicola tail occaecat cupidatat, meatloaf minim chuck. In magna picanha, dolore excepteur reprehenderit fatback duis spare ribs porchetta...",
-                classes : "govuk-body-s"
-              }
-            ],
-            [
-              {
-                html: "<a href='/profile'>Noonien Singh</a>",
-                classes : "govuk-body-s"
-              },
-              {
-                html: "<a href='/organisation/central-london-gurdwara'>Central London Gurdwara</a>",
-                classes : "govuk-body-s"
-              },
-              {
-                text: "01/01/2019",
-                classes : "govuk-body-s"
-              },
-              {
-                text: "Biltong pastrami pork chop anim, jowl qui nulla venison. Ut corned beef aute drumstick tempor consequat...",
-                classes : "govuk-body-s"
-              }
-            ]
-          ]
-        }) }}
+    <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-heading-m">Engagement history</caption>
+          <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Date</th>
+                <th class="govuk-table__header" scope="col">Stakeholder</th>
+                <th class="govuk-table__header" scope="col">Organisation</th>
+                <th class="govuk-table__header govuk-!-width-one-half" scope="col">Summary</th>
+              </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+              {% for entry in entries %}
+                  <tr class="govuk-table__row">
+                      <td class="govuk-table__cell govuk-body-s" scope="row">
+                          {{ entry.date }}
+                      </td>
+                      <td class="govuk-table__cell govuk-body-s" scope="row">
+                          <a href='/stakeholder'>{{ entry.name }}</a>
+                      </td>
+                      <td class="govuk-table__cell govuk-body-s">
+                          <a href='#'>{{ entry.organisation }}</a>
+                      </td>
+                      <td class="govuk-table__cell govuk-body-s">
+                        {{ entry.summary | escape | truncate(200) | nl2br }}
+                      </td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+
+      
     
         {{ govukButton({
               text: "Record a new engagement",

@@ -1,0 +1,23 @@
+[
+    {   
+        "uid" : "0",
+        "type": "County Council",
+        "name": "West County Council",
+        "region": "west-midlands",
+        "stakeholders" : ["0"]
+    },
+    {
+        "uid" : "1",
+        "type": "Confectionary Manufacturer",
+        "name": "Big Chocolate Factory",
+        "region": "south-east",
+        "stakeholders" : ["1"]
+    },
+    {
+        "uid" : "2",
+        "type": "Construction",
+        "name": "ACME Construction",
+        "region": "north-west",
+        "stakeholders" : ["2"]
+    }
+]

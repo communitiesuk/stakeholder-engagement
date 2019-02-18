@@ -1,10 +1,7 @@
-[ 
+[
 	{
-		"organisation": {
-			"type": "County Council",
-			"name": "West County Council",
-			"region": "West Midlands"
-		},
+		"uid" : "0",
+		"organisation": "0",
 		"name": {
 			"fullName": "Alison Yaqub",
 			"title": "Ms",
@@ -31,11 +28,8 @@
 		]
 	},
 	{
-		"organisation": {
-			"type": "Confectionary Manufacturer",
-			"name": "Big Chocolate Factory",
-			"region": "South East"
-		},
+		"uid" : "1",
+		"organisation": "1",
 		"name": {
 			"fullName": "Gerry McDougall",
 			"title": "Ms",
@@ -58,11 +52,8 @@
 		]
 	},
 	{
-		"organisation": {
-			"type": "Construction",
-			"name": "ACME Construction",
-			"region": "North West"
-		},
+		"uid" : "2",
+		"organisation": "2",
 		"name": {
 			"fullName": "Dorian Green",
 			"title": "Mr",

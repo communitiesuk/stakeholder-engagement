@@ -1,6 +1,6 @@
-const profileRouter = (req, res) => {
+const stakeholderRouter = (req, res) => {
     const { step } = req.params;
-    let template = "profile/index";
+    let template = "stakeholder/index";
     
     let params = {
       currentpath: req.path,
@@ -11,5 +11,5 @@ const profileRouter = (req, res) => {
     res.render(template, params);
   };
   
-  module.exports = profileRouter;
+  module.exports = stakeholderRouter;
   
