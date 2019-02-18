@@ -29,13 +29,13 @@ const policyRouter = (req, res) => {
 
           stakeholders.filter(function (stakeholder) {
             if(stakeholder.uid === engagement.stakeholder) {
-              const { organisation, name, role } = stakeholder;
+              const { organisation, name, role, uid } = stakeholder;
 
               if(anonymous === 'no') {
                 entry.stakeholder = {
                   name : name.fullName,
-                  organisation : organisation.name,
-                  role
+                  organisation : organisation,
+                  role, uid
                 }
               } else {
                 entry.stakeholder = {

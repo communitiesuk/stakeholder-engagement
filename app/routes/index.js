@@ -20,19 +20,23 @@ const indexRouter = (req, res) => {
       const { summary, date, anonymous, staff, stakeholder, organisation } = engagement;
 
       let entry = {
-        date, summary, staff,
+        date, summary, staff, anonymous,
         name : 'Anonymous'
       };
 
-      let filteredStakeholder = stakeholders.filter(({uid}) => uid === stakeholder);
-      let filteredOrganisation = organisations.filter(({uid}) => uid === organisation);
-      if(anonymous == 'no') {
-        entry.name = filteredStakeholder[0].name.fullName;
-        entry.organisation = filteredOrganisation[0].name;
-      } else {
-        entry.organisation = filteredOrganisation[0].type;
-      }
+      let filteredStakeholder = stakeholders.find(({uid}) => uid === stakeholder);
+      let filteredOrganisation = organisations.find(({uid}) => uid === organisation);
 
+
+      if(anonymous == 'no') {
+        entry.name = filteredStakeholder.name.fullName;
+        entry.organisation = filteredOrganisation.name;
+        entry.stakeholderURL = `/stakeholder/${filteredStakeholder.uid}`;
+        entry.organisationURL = `/organisation/${filteredOrganisation.uid}`;
+        
+      } else {
+        entry.organisation = filteredOrganisation.type;
+      }
       params.entries.push(entry);
     });
     

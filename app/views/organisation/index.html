@@ -16,39 +16,46 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Stakeholder</span>
-        {{ stakeholder.name.fullName }}
+        <span class="govuk-caption-l">Organisation</span>
+        {{ organisation.name }}
       </h1>
        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-quarter">
-                <dl class="mhclg-summary-list">
-                    <dt>Position</dt>
-                    <dd>{{ stakeholder.role }}</dd>
-                </dl>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <dl class="mhclg-summary-list">
-                    <dt>Organisation</dt>
-                    <dd>
-                      <a class="govuk-link" href="/organisation/{{organisation.uid}}">{{ organisation.name }}</a>
-                    </dd>
-                </dl>
-            </div>
             <div class="govuk-grid-column-one-quarter">
                 <dl class="mhclg-summary-list">
                     <dt>Region</dt>
                     <dd>{{ region }}</dd>
                 </dl>
             </div>
-            <div class="govuk-grid-column-one-quarter">
-                {{ govukButton({
-                    text: "Record engagement",
-                    href : "/engagement"
-                }) }}
-            </div>
         </div>
     </div>
   </div>
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">  
+         <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-heading-m">Stakeholders</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col">Name</th>
+                  <th class="govuk-table__header" scope="col">Position</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                {% for entry in stakeholders %}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-body-s" scope="row">
+                            <a href="/stakeholder/{{entry.uid}}">
+                            {{ entry.name.fullName }}
+                            </a>
+                        </td>
+                        <td class="govuk-table__cell govuk-body-s" scope="row">
+                              {{ entry.role }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
   <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">  
          <table class="govuk-table">

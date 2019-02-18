@@ -73,10 +73,14 @@
                           {{ entry.date }}
                       </td>
                       <td class="govuk-table__cell govuk-body-s" scope="row">
-                          <a href='/stakeholder'>{{ entry.name }}</a>
+                          <a href='{{ entry.stakeholderURL }}'>
+                            {{ entry.name }}
+                          </a>
                       </td>
                       <td class="govuk-table__cell govuk-body-s">
-                          <a href='#'>{{ entry.organisation }}</a>
+                          <a href='{{ entry.organisationURL }}'>
+                            {{ entry.organisation }}
+                          </a>
                       </td>
                       <td class="govuk-table__cell govuk-body-s">
                         {{ entry.summary | escape | truncate(200) | nl2br }}
