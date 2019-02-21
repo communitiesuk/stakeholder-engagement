@@ -29,44 +29,52 @@
                 }) %}
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
-                        {{ govukInput({
+                        {{ govukSelect({
+                            id: "policy-filter-stakeholder",
+                            name: "policy-filter-stakeholder",
+                            classes: "govuk-!-width-full",
                             label: {
                                 text: "Stakeholder"
                             },
-                            id: "policy-filter-stakeholder",
-                            name: "policy-filter-stakeholder"
-                        }) }}
+                            items: stakeholderOptions
+                            }) }}
                     </div>
                        
                         <div class="govuk-grid-column-one-third">
-                            {{ govukInput({
+                            {{ govukSelect({
+                                id: "policy-filter-organisation",
+                                name: "policy-filter-organisation",
+                                classes: "govuk-!-width-full",
                                 label: {
                                     text: "Organisation"
                                 },
-                                id: "policy-filter-organisation",
-                                name: "policy-filter-organisation"
-                            }) }}
+                                items: organisationOptions
+                                }) }}
                         </div>
                          <div class="govuk-grid-column-one-third">
-                        {{ govukInput({
-                            label: {
-                                text: "MHCLG staff"
-                            },
-                            id: "policy-filter-staff",
-                            name: "policy-filter-staff"
-                        }) }}
+                            {{ govukSelect({
+                                id: "policy-filter-staff",
+                                name: "policy-filter-staff",
+                                classes: "govuk-!-width-full",
+                                label: {
+                                    text: "Organisation"
+                                },
+                                items: staffOptions
+                                }) }}
                     </div>
                         
                 </div>
                  <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
-                            {{ govukInput({
+                             {{ govukSelect({
+                                id: "policy-filter-policy",
+                                name: "policy-filter-policy",
+                                classes: "govuk-!-width-full",
                                 label: {
                                     text: "Policy area"
                                 },
-                                id: "policy-filter-area",
-                                name: "policy-filter-area"
-                            }) }}
+                                items: policyOptions
+                                }) }}
                         </div>
                     <div class="govuk-grid-column-one-third">
                         {{ govukInput({

@@ -55,17 +55,18 @@
                         }
                     }) }}
 
-                    {{ govukFileUpload({
-                        id: "stakeholder-file-notes",
-                        name: "stakeholder-file-notes",
-                        value: data['stakeholder-file-notes'],
+                    {{ govukInput({
                         label: {
-                            text: "Upload engagement notes"
+                            text: "Engagement notes"
                         },
                         hint: {
-                            text: "notes in a different file format that need to be attached to this engagement"
-                        }
+                            text: "eg sharepoint link"
+                        },
+                        classes: "govuk-!-width-two-thirds",
+                        id: "stakeholder-file-notes",
+                        name: "stakeholder-file-notes"
                     }) }}
+
 
                     {{ govukCheckboxes({
                         idPrefix: "stakeholder-themes",

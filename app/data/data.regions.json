@@ -1,11 +1,11 @@
 {
-    "east-midlands" : "East Midlands",
-    "east-of-england" : "East of England",
-    "greater-london" : "Greater London",
-    "north-east" : "North East",
-    "north-west" : "North West",
-    "south-east" : "South East",
-    "south-west" : "South West",
-    "west-midlands" : "West Midlands",
-    "yorkshire-and-the-humber-east" : "Yorkshire and the Humber East"
+  "east-midlands": "East Midlands",
+  "east-of-england": "East of England",
+  "greater-london": "Greater London",
+  "north-east": "North East",
+  "north-west": "North West",
+  "south-east": "South East",
+  "south-west": "South West",
+  "west-midlands": "West Midlands",
+  "yorkshire-and-the-humber": "Yorkshire and the Humber"
 }
