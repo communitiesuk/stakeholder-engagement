@@ -12,6 +12,15 @@
     }) }}
 {% endblock %}
 
+{% block pageScripts %}
+<script src="/public/javascripts/library/accessible-autocomplete.min.js"></script>
+<script>
+    var MHCLG = window.MHCLG || {};
+    MHCLG.pageParams = {{ pageParams | safe }};
+</script>
+<script src="/public/javascripts/mhclg.search.js"></script>
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -74,6 +83,17 @@
                                     text: "Policy area"
                                 },
                                 items: policyOptions
+                                }) }}
+                        </div>
+                        <div class="govuk-grid-column-one-third">
+                             {{ govukSelect({
+                                id: "policy-filter-region",
+                                name: "policy-filter-region",
+                                classes: "govuk-!-width-full",
+                                label: {
+                                    text: "Region"
+                                },
+                                items: regionOptions
                                 }) }}
                         </div>
                     <div class="govuk-grid-column-one-third">

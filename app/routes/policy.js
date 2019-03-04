@@ -8,7 +8,10 @@ const policyRouter = (req, res) => {
     const stakeholders =  require("../data/data.stakeholders.json");
     const organisations = require("../data/data.organisations.json");
     const staff = require("../data/data.staff.json");
-    
+    const data = [
+      policies, regions, engagements, stakeholders, organisations, staff
+    ];
+
     let params = {
       currentpath: req.path,
       params: req.params,
@@ -54,6 +57,13 @@ const policyRouter = (req, res) => {
       } 
     });
     // ================
+    
+  data.forEach(function (item, index) {
+
+    console.log(index);
+
+  });
+
     const stakeholderOptions = stakeholders.map(item => ({
       value: item.uid,
       text: item.name.fullName
@@ -66,21 +76,29 @@ const policyRouter = (req, res) => {
       value: item.uid,
       text: item.name
     }));
+    
     const policyOptions = Object.keys(policies).map(function (key, index) {
       return {
         value: key,
         text: policies[key]
-    }});
-
+      }
+    });
+    const regionOptions = Object.keys(regions).map(function (key, index) {
+      return {
+        value: key,
+        text: regions[key]
+      }
+    });
+    
     params.stakeholderOptions = [
       {
-        text: "Select a stakeholder"
+        text: "Select stakeholder"
       },
       ...stakeholderOptions
     ];
     params.organisationOptions = [
       {
-        text: "Select an organisation"
+        text: "Select organisation"
       },
       ...organisationOptions
     ];
@@ -92,9 +110,15 @@ const policyRouter = (req, res) => {
     ];
     params.policyOptions = [
       {
-        text: "Select a policy"
+        text: "Select policy"
       },
       ...policyOptions
+    ];
+    params.regionOptions = [
+      {
+        text: "Select region"
+      },
+      ...regionOptions
     ];
     // ================
     res.render(template, params);

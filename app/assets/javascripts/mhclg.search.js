@@ -14,13 +14,13 @@ MHCLG.searchStakeholder = function () {
     })
 };
 
-MHCLG.searchOrganisation = function () {
-    // we need to send the text because the select isnt giving back the required result
-    var params = MHCLG.pageParams;
-    $('form').on('submit', function (ev) {
-        this.action = encodeURI('/search-results/' + $('#MHCLG--organisation__chosen').text());
-    });
-};
+// MHCLG.searchOrganisation = function () {
+//     // we need to send the text because the select isnt giving back the required result
+//     var params = MHCLG.pageParams;
+//     $('form').on('submit', function (ev) {
+//         this.action = encodeURI('/search-results/' + $('#MHCLG--organisation__chosen').text());
+//     });
+// };
 
 $(function () {
     MHCLG.searchStakeholder();
